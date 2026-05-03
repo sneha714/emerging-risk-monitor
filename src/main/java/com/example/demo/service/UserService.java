@@ -7,6 +7,9 @@ import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import java.util.List;
 
 @Service
@@ -23,6 +26,11 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+
+    public Page<User> getUsersWithPagination(int page, int size) {
+        return userRepository.findAll(PageRequest.of(page, size));
     }
 
 

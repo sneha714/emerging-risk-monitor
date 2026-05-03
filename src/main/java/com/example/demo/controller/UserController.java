@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @CrossOrigin(origins = "*")
 public class UserController {
 
@@ -33,8 +33,8 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/email/{email}")
-    public User getUserByEmail(@PathVariable String email) {
+    @GetMapping("/by-email")
+    public User getUserByEmail(@RequestParam String email) {
         return userService.getUserByEmail(email);
     }
 
